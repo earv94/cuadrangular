@@ -14,6 +14,7 @@ export class FormularioComponent {
   tabla:string[]=["","","",""];
   puntuaciones:number[]=[0,0,0,0];
   public corrimiento = 0;
+  show:boolean=false;
 
   calculo(nombre1: string, nombre2: string, resultado1: number, resultado2: number) {
     console.log(this.puntuaciones[0]);
@@ -27,12 +28,10 @@ export class FormularioComponent {
       if (flag == 5) {
         this.tabla[this.corrimiento] = nombre1;
         this.puntuaciones[this.corrimiento]=0;
-        console.log("inicializado doble",nombre1,"puntos en total: ",this.puntuaciones[this.corrimiento]);
         flag=this.corrimiento;
         this.corrimiento++;
       }
       this.puntuaciones[flag] = this.puntuaciones[flag] + 3;
-      console.log("ganador",nombre1,"puntos en total: ",this.puntuaciones[flag]);
 
     } else if (resultado1 < resultado2) {
       let flag = 5;
@@ -48,7 +47,6 @@ export class FormularioComponent {
         this.corrimiento++;
       }
       this.puntuaciones[flag] += 3;
-      console.log("ganador",nombre2,"puntos en total: ",this.puntuaciones[flag]);
     } else {
       let flag1 = 5;
       let flag2 = 5;
@@ -75,9 +73,6 @@ export class FormularioComponent {
       }
       this.puntuaciones[flag1] += 1;
       this.puntuaciones[flag2] += 1;
-      console.log("empate");
-      console.log(nombre1,"puntos en total: ",this.puntuaciones[flag1]);
-      console.log(nombre2,"puntos en total: ",this.puntuaciones[flag2]);
     }
   }
 
@@ -92,17 +87,16 @@ export class FormularioComponent {
     this.calculo(this.equipoModel.nombre7,this.equipoModel.nombre8,this.equipoModel.resultado7,this.equipoModel.resultado8);
     this.calculo(this.equipoModel.nombre9,this.equipoModel.nombre10,this.equipoModel.resultado9,this.equipoModel.resultado10);
     this.calculo(this.equipoModel.nombre11,this.equipoModel.nombre12,this.equipoModel.resultado11,this.equipoModel.resultado12);
-  
+    for (let i=0;i<this.puntuaciones.length;i++){
+      console.log("Equipo:    ",this.tabla[i],"  Resultado:    ", this.puntuaciones[i]);
+    }
 
-    /*if(this.corrimiento!=4){
+    this.show=true;
+
+    /*
+    si el corrimiento no termina en 4 es porque no lleno con todos los equipos
+    if(this.corrimiento!=4){
       for ()
     }*/
-    //vista por consola
-    console.log("El resultado es:");
-    for (let i = 0; i < this.corrimiento; i++) {
-      console.log("Equipo",this.tabla[i],this.puntuaciones[i]);
-    }
-   
-    alert("El resultado esta en el log");
   }
 }

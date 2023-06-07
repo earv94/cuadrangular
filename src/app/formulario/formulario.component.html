@@ -1,35 +1,54 @@
-<h1>Ingrese los datos de los equipos:</h1>
-<br>
-<form #formularioFutbol="ngForm" (ngSubmit)="formularioEnviado()">
-    <input type="text" name="Equipo1a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre1">
-    <input type="text" name="Equipo1b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre2">
-    <input type="number" name="resultado1a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado1">
-    <input type="number" name="resultado1b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado2">
-    <br><br>
-    <input type="text" name="Equipo2a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre3">
-    <input type="text" name="Equipo2b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre4">
-    <input type="number" name="resultado2a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado3">
-    <input type="number" name="resultado2b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado4">
-    <br><br>
-    <input type="text" name="Equipo3a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre5">
-    <input type="text" name="Equipo3b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre6">
-    <input type="number" name="resultado3a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado5">
-    <input type="number" name="resultado3b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado6">
-    <br><br>
-    <input type="text" name="Equipo4a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre7">
-    <input type="text" name="Equipo4b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre8">
-    <input type="number" name="resultado4a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado7">
-    <input type="number" name="resultado4b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado8">
-    <br><br>
-    <input type="text" name="Equipo5a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre9">
-    <input type="text" name="Equipo5b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre10">
-    <input type="number" name="resultado5a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado9">
-    <input type="number" name="resultado5b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado10">
-    <br><br>
-    <input type="text" name="Equipo6a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre11">
-    <input type="text" name="Equipo6b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre12">
-    <input type="number" name="resultado6a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado11">
-    <input type="number" name="resultado6b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado12">
-    <br><br>
-    <button type="submit">Guardar</button>
-</form>
+<div class=" bg-cyan-700 h-screen">
+    
+    <div class="grid justify-items-center">
+            <h1 class="text-3xl font-bold underline">Ingrese los datos de los equipos:</h1>
+            <form #formularioFutbol="ngForm" (ngSubmit)="formularioEnviado()">
+
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo1a" placeholder="Nombre del equipo 1" [(ngModel)]="equipoModel.nombre1">
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo1b" placeholder="Nombre del equipo 2" [(ngModel)]="equipoModel.nombre2">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado1a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado1">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado1b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado2">
+            <br><br>
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo2a" placeholder="Nombre del equipo 1" [(ngModel)]="equipoModel.nombre3">
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo2b" placeholder="Nombre del equipo 2" [(ngModel)]="equipoModel.nombre4">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado2a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado3">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado2b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado4">
+            <br><br>
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo3a" placeholder="Nombre del equipo 1" [(ngModel)]="equipoModel.nombre5">
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo3b" placeholder="Nombre del equipo 2" [(ngModel)]="equipoModel.nombre6">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado3a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado5">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado3b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado6">
+            <br><br>
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo4a" placeholder="Nombre del equipo 1" [(ngModel)]="equipoModel.nombre7">
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo4b" placeholder="Nombre del equipo 2" [(ngModel)]="equipoModel.nombre8">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado4a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado7">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado4b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado8">
+            <br><br>
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo5a" placeholder="Nombre del equipo 1" [(ngModel)]="equipoModel.nombre9">
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo5b" placeholder="Nombre del equipo 2" [(ngModel)]="equipoModel.nombre10">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado5a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado9">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado5b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado10">
+            <br><br>
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo6a" placeholder="Nombre del equipo 1" [(ngModel)]="equipoModel.nombre11">
+            <input class="border-2 border-black rounded-md mr-4" type="text" name="Equipo6b" placeholder="Nombre del equipo 2" [(ngModel)]="equipoModel.nombre12">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado6a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado11">
+            <input class="border-2 border-black rounded-md mr-4 w-10" type="number" name="resultado6b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado12">
+            <br><br>
+            <div class="w-full grid justify-items-center ">
+                <button  class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" type="submit">Guardar</button>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="show" class="grid grid-cols-2 gap-4 justify-items-center">
+        <div class="grid gap-4">
+            <div *ngFor="let item of tabla" class="bg-white rounded-md">
+                <h3>Equipo: {{ item }}</h3>
+            </div>
+        </div>
+        <div class="grid gap-4">
+            <div *ngFor="let item of puntuaciones" class="bg-white rounded-md">
+                <h3>Resultado: {{ item }}</h3>
+            </div>
+        </div>
+    </div>
+</div>

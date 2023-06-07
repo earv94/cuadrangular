@@ -1,0 +1,35 @@
+<h1>Ingrese los datos de los equipos:</h1>
+<br>
+<form #formularioFutbol="ngForm" (ngSubmit)="formularioEnviado()">
+    <input type="text" name="Equipo1a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre1">
+    <input type="text" name="Equipo1b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre2">
+    <input type="number" name="resultado1a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado1">
+    <input type="number" name="resultado1b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado2">
+    <br><br>
+    <input type="text" name="Equipo2a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre3">
+    <input type="text" name="Equipo2b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre4">
+    <input type="number" name="resultado2a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado3">
+    <input type="number" name="resultado2b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado4">
+    <br><br>
+    <input type="text" name="Equipo3a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre5">
+    <input type="text" name="Equipo3b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre6">
+    <input type="number" name="resultado3a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado5">
+    <input type="number" name="resultado3b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado6">
+    <br><br>
+    <input type="text" name="Equipo4a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre7">
+    <input type="text" name="Equipo4b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre8">
+    <input type="number" name="resultado4a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado7">
+    <input type="number" name="resultado4b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado8">
+    <br><br>
+    <input type="text" name="Equipo5a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre9">
+    <input type="text" name="Equipo5b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre10">
+    <input type="number" name="resultado5a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado9">
+    <input type="number" name="resultado5b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado10">
+    <br><br>
+    <input type="text" name="Equipo6a" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre11">
+    <input type="text" name="Equipo6b" placeholder="Nombre del equipo" [(ngModel)]="equipoModel.nombre12">
+    <input type="number" name="resultado6a" placeholder="Resultado" [(ngModel)]="equipoModel.resultado11">
+    <input type="number" name="resultado6b" placeholder="Resultado" [(ngModel)]="equipoModel.resultado12">
+    <br><br>
+    <button type="submit">Guardar</button>
+</form>

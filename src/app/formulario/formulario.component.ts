@@ -15,56 +15,69 @@ export class FormularioComponent {
   puntuaciones:number[]=[0,0,0,0];
   public corrimiento = 0;
 
-  calculo(nombre1:string, nombre2: string, resultado1: number, resultado2:number){
-    if ((resultado1)>(resultado2)) {
+  calculo(nombre1: string, nombre2: string, resultado1: number, resultado2: number) {
+    console.log(this.puntuaciones[0]);
+    if (resultado1 > resultado2) {
       let flag = 5;
       for (let i = 0; i < 3; i++) {
-        if((this.tabla[i] === nombre1)&&(nombre1!=null)){
-          flag=i;
+        if (this.tabla[i] === nombre1 && nombre1 != null) {
+          flag = i;
         }
       }
-      if(flag==5){
-        this.tabla[this.corrimiento]=nombre1;
+      if (flag == 5) {
+        this.tabla[this.corrimiento] = nombre1;
+        this.puntuaciones[this.corrimiento]=0;
+        console.log("inicializado doble",nombre1,"puntos en total: ",this.puntuaciones[this.corrimiento]);
+        flag=this.corrimiento;
         this.corrimiento++;
       }
-      this.puntuaciones[flag]+=3;
-    }
-    else if ((resultado1)<(resultado2)){
+      this.puntuaciones[flag] = this.puntuaciones[flag] + 3;
+      console.log("ganador",nombre1,"puntos en total: ",this.puntuaciones[flag]);
+
+    } else if (resultado1 < resultado2) {
       let flag = 5;
       for (let i = 0; i < 3; i++) {
-        if((this.tabla[i] === nombre2)&&(nombre2!=null)){
-          flag=i;
+        if (this.tabla[i] === nombre2 && nombre2 != null) {
+          flag = i;
         }
       }
-      if(flag==5){
-        this.tabla[this.corrimiento]=nombre2;
-        this.corrimiento++
-      }
-      this.puntuaciones[flag]+=3;
-    }
-    else {
-      let flag = 5;
-      for (let i = 0; i < 3; i++) {
-        if((this.tabla[i] === nombre1)&&(nombre1!=null)){
-          flag=i;
-        }
-      }
-      if(flag==5){
-        this.tabla[this.corrimiento]=nombre1;
+      if (flag == 5) {
+        this.tabla[this.corrimiento] = nombre2;
+        this.puntuaciones[this.corrimiento]=0;
+        flag=this.corrimiento;
         this.corrimiento++;
       }
-      this.puntuaciones[flag]+=1;
-      flag=5;
+      this.puntuaciones[flag] += 3;
+      console.log("ganador",nombre2,"puntos en total: ",this.puntuaciones[flag]);
+    } else {
+      let flag1 = 5;
+      let flag2 = 5;
       for (let i = 0; i < 3; i++) {
-        if((this.tabla[i] === nombre2)&&(nombre2!=null)){
-          flag=i;
+        if ((this.tabla[i] === nombre1) && (nombre1 != null)) {
+          flag1 = i;
+        }
+        if ((this.tabla[i] === nombre2) && (nombre2 != null)) {
+          flag2 = i;
         }
       }
-      if(flag==5){
-        this.tabla[this.corrimiento]=nombre2;
+      if (flag1 == 5) {
+        this.tabla[this.corrimiento] = nombre1;
+        this.puntuaciones[this.corrimiento]=0;
+        flag1=this.corrimiento;
+        this.corrimiento++;
+
+      }
+      if (flag2 == 5) {
+        this.tabla[this.corrimiento] = nombre2;
+        this.puntuaciones[this.corrimiento]=0;
+        flag2=this.corrimiento;
         this.corrimiento++;
       }
-      this.puntuaciones[flag]+=1;
+      this.puntuaciones[flag1] += 1;
+      this.puntuaciones[flag2] += 1;
+      console.log("empate");
+      console.log(nombre1,"puntos en total: ",this.puntuaciones[flag1]);
+      console.log(nombre2,"puntos en total: ",this.puntuaciones[flag2]);
     }
   }
 

@@ -13,54 +13,36 @@ export class FormularioComponent {
   ngOnInit() {}
   tabla:string[]=["","","",""];
   puntuaciones:number[]=[0,0,0,0];
-  public corrimiento = 0;
+  corrimiento = 0;
   show:boolean=false;
 
-  verificarEmpate(nombre: string){
-    //si el nombre esta en la tabla suma el punto en la misma posicion del equipo en el array tabla
-    if((this.tabla.includes(nombre)) && (nombre != null)) {
-      this.puntuaciones[this.tabla.indexOf(nombre)]++; 
-    }
-    //si nombre no esta en la tabla y nombre no es nulo a;ade el nombre en la posicion del corrimiento, mueve el corrimiento y 
-    //suma el punto en la misma posicion del equipo en el array tabla
-    else { 
+  verificarGanador(nombre: string){
+    //si el nombre no esta en la tabla a;ade el nombre en la posicion del corrimiento, mueve el corrimiento
+    if((!this.tabla.includes(nombre)) && (nombre != null)) {
       this.tabla[this.corrimiento] = nombre;
-      this.corrimiento++;
-      this.puntuaciones[this.tabla.indexOf(nombre)]++; 
+      this.corrimiento++; 
     }
+    //suma los 3 puntos en la misma posicion del equipo en el array tabla
+    this.puntuaciones[this.tabla.indexOf(nombre)]+=3;
+  }
+
+  verificarEmpate(nombre: string){
+    //si el nombre no esta en la tabla a;ade el nombre en la posicion del corrimiento, mueve el corrimiento
+    if((!this.tabla.includes(nombre)) && (nombre != null)) {
+      this.tabla[this.corrimiento] = nombre;
+      this.corrimiento++; 
+    }
+    //suma el punto en la misma posicion del equipo en el array tabla
+    this.puntuaciones[this.tabla.indexOf(nombre)]++;    
   }
 
   calculo(nombre1: string, nombre2: string, resultado1: number, resultado2: number) {
     console.log(this.puntuaciones[0]);
       //validacion equipo a gana
     if (resultado1 > resultado2) {
-      let flag = 5;
-      for (let i = 0; i < 3; i++) { //verificar que este en la tabla
-        if (this.tabla[i] === nombre1 && nombre1 != null) {
-          flag = i;//guarda la ubicacion del equipo
-        }
-      }
-      if (flag == 5) {//entra cuando no esta en tabla
-        this.tabla[this.corrimiento] = nombre1; //a;ade al equipo en la posicion del corrimiento
-        flag=this.corrimiento; //guarda la ubicacion del equipo y desplaza el corrimiento
-        this.corrimiento++;
-      }
-      this.puntuaciones[flag] = this.puntuaciones[flag] + 3; //suma +3 al equipo ganador
-      //validacion equipo b gana
+      this.verificarGanador(nombre1);
     } else if (resultado1 < resultado2) {
-      let flag = 5;
-      for (let i = 0; i < 3; i++) { //verificar que este en la tabla
-        if (this.tabla[i] === nombre2 && nombre2 != null) {
-          flag = i;//guarda la ubicacion del equipo
-        }
-      }
-      if (flag == 5) {//entra cuando no esta en tabla
-        this.tabla[this.corrimiento] = nombre2;//a;ade al equipo en la posicion del corrimiento
-        flag=this.corrimiento; //guarda la ubicacion del equipo y desplaza el corrimiento
-        this.corrimiento++;
-      }
-      this.puntuaciones[flag] += 3;
-      //validacion empate
+      this.verificarGanador(nombre2);
     } else {
       this.verificarEmpate(nombre1);
       this.verificarEmpate(nombre2);

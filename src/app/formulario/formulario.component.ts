@@ -61,12 +61,16 @@ export class FormularioComponent {
         this.corrimiento++;
         this.puntuaciones[this.tabla.indexOf(nombre1)]++; 
       }
-      if((this.tabla.includes(nombre2)) && (nombre2 != null)) {//si el nombre esta en la tabla
-        this.puntuaciones[this.tabla.indexOf(nombre2)]++; //suma el punto en la misma posicion del equipo en el array tabla
-      }else { //si nombre no esta en la tabla y nombre no es nulo
-        this.tabla[this.corrimiento] = nombre2;//a;ade el nombre en la posicion del corrimiento
+      //si el nombre esta en la tabla suma el punto en la misma posicion del equipo en el array tabla
+      if((this.tabla.includes(nombre2)) && (nombre2 != null)) {
+        this.puntuaciones[this.tabla.indexOf(nombre2)]++; 
+      }
+      //si nombre no esta en la tabla y nombre no es nulo a;ade el nombre en la posicion del corrimiento, mueve el corrimiento y 
+      //suma el punto en la misma posicion del equipo en el array tabla
+      else { 
+        this.tabla[this.corrimiento] = nombre2;
         this.corrimiento++;
-        this.puntuaciones[this.tabla.indexOf(nombre2)]++; //suma el punto en la misma posicion del equipo en el array tabla
+        this.puntuaciones[this.tabla.indexOf(nombre2)]++;
       }
     }
   }

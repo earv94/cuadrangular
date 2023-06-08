@@ -18,6 +18,7 @@ export class FormularioComponent {
 
   calculo(nombre1: string, nombre2: string, resultado1: number, resultado2: number) {
     console.log(this.puntuaciones[0]);
+      //validacion equipo a gana
     if (resultado1 > resultado2) {
       let flag = 5;
       for (let i = 0; i < 3; i++) {
@@ -32,7 +33,7 @@ export class FormularioComponent {
         this.corrimiento++;
       }
       this.puntuaciones[flag] = this.puntuaciones[flag] + 3;
-
+      //validacion equipo b gana
     } else if (resultado1 < resultado2) {
       let flag = 5;
       for (let i = 0; i < 3; i++) {
@@ -47,32 +48,26 @@ export class FormularioComponent {
         this.corrimiento++;
       }
       this.puntuaciones[flag] += 3;
+      //validacion empate
     } else {
-      let flag1 = 5;
-      let flag2 = 5;
-      for (let i = 0; i < 3; i++) {
-        if ((this.tabla[i] === nombre1) && (nombre1 != null)) {
-          flag1 = i;
-        }
-        if ((this.tabla[i] === nombre2) && (nombre2 != null)) {
-          flag2 = i;
-        }
+      //si el nombre esta en la tabla suma el punto en la misma posicion del equipo en el array tabla
+      if((this.tabla.includes(nombre1)) && (nombre1 != null)) {
+        this.puntuaciones[this.tabla.indexOf(nombre1)]++; 
       }
-      if (flag1 == 5) {
+      //si nombre no esta en la tabla y nombre no es nulo a;ade el nombre en la posicion del corrimiento, mueve el corrimiento y 
+      //suma el punto en la misma posicion del equipo en el array tabla
+      else { 
         this.tabla[this.corrimiento] = nombre1;
-        this.puntuaciones[this.corrimiento]=0;
-        flag1=this.corrimiento;
         this.corrimiento++;
-
+        this.puntuaciones[this.tabla.indexOf(nombre1)]++; 
       }
-      if (flag2 == 5) {
-        this.tabla[this.corrimiento] = nombre2;
-        this.puntuaciones[this.corrimiento]=0;
-        flag2=this.corrimiento;
+      if((this.tabla.includes(nombre2)) && (nombre2 != null)) {//si el nombre esta en la tabla
+        this.puntuaciones[this.tabla.indexOf(nombre2)]++; //suma el punto en la misma posicion del equipo en el array tabla
+      }else { //si nombre no esta en la tabla y nombre no es nulo
+        this.tabla[this.corrimiento] = nombre2;//a;ade el nombre en la posicion del corrimiento
         this.corrimiento++;
+        this.puntuaciones[this.tabla.indexOf(nombre2)]++; //suma el punto en la misma posicion del equipo en el array tabla
       }
-      this.puntuaciones[flag1] += 1;
-      this.puntuaciones[flag2] += 1;
     }
   }
 

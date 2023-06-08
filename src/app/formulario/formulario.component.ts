@@ -16,36 +16,26 @@ export class FormularioComponent {
   corrimiento = 0;
   show:boolean=false;
 
-  verificarGanador(nombre: string){
+  puntuarEquipo(nombre: string, puntos: number){
     //si el nombre no esta en la tabla a;ade el nombre en la posicion del corrimiento, mueve el corrimiento
     if((!this.tabla.includes(nombre)) && (nombre != null)) {
       this.tabla[this.corrimiento] = nombre;
       this.corrimiento++; 
     }
-    //suma los 3 puntos en la misma posicion del equipo en el array tabla
-    this.puntuaciones[this.tabla.indexOf(nombre)]+=3;
-  }
-
-  verificarEmpate(nombre: string){
-    //si el nombre no esta en la tabla a;ade el nombre en la posicion del corrimiento, mueve el corrimiento
-    if((!this.tabla.includes(nombre)) && (nombre != null)) {
-      this.tabla[this.corrimiento] = nombre;
-      this.corrimiento++; 
-    }
-    //suma el punto en la misma posicion del equipo en el array tabla
-    this.puntuaciones[this.tabla.indexOf(nombre)]++;    
+    //suma los puntos en la misma posicion del equipo en el array tabla
+    this.puntuaciones[this.tabla.indexOf(nombre)]+=puntos;
   }
 
   calculo(nombre1: string, nombre2: string, resultado1: number, resultado2: number) {
     console.log(this.puntuaciones[0]);
       //validacion equipo a gana
     if (resultado1 > resultado2) {
-      this.verificarGanador(nombre1);
+      this.puntuarEquipo(nombre1,3);
     } else if (resultado1 < resultado2) {
-      this.verificarGanador(nombre2);
+      this.puntuarEquipo(nombre2,3);
     } else {
-      this.verificarEmpate(nombre1);
-      this.verificarEmpate(nombre2);
+      this.puntuarEquipo(nombre1,1);
+      this.puntuarEquipo(nombre2,1);
     }
   }
 

@@ -7,33 +7,49 @@ import { Resultado } from '../equipo';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
-
-  equipoModel= new Resultado("","", 0,0,"","", 0, 0,"","", 0, 0,"","", 0, 0,"","", 0, 0,"","", 0, 0);
-  constructor() {}
-  ngOnInit() {}
-  tabla:string[]=["","","",""];
-  puntuaciones:number[]=[0,0,0,0];
-  corrimiento = 0;
+  equipoModel: Resultado[]=[];
+  tabla:string[]=[];
+  puntuaciones:number[]=[];
   show:boolean=false;
+  errorflag:boolean=false;
+  
+  constructor () {
+    for (let i=0; i<6; i++){
+      this.equipoModel.push(new Resultado("","",0,0));
+    }
+  }
 
   puntuarEquipo(nombre: string, puntos: number){
     //si el nombre no esta en la tabla a;ade el nombre en la posicion del corrimiento, mueve el corrimiento
     if((!this.tabla.includes(nombre)) && (nombre != null)) {
-      this.tabla[this.corrimiento] = nombre;
-      this.corrimiento++; 
+      if(this.tabla.length>3){
+        if (!this.errorflag) {
+          alert("Ha ingresado más de 4 equipos, revise e intente nuevamente");
+          this.errorflag = true;
+        }
+        return;
+      }else{
+        this.tabla.push(nombre); 
+        this.puntuaciones.push(0);
+      }
     }
     //suma los puntos en la misma posicion del equipo en el array tabla
     this.puntuaciones[this.tabla.indexOf(nombre)]+=puntos;
   }
 
   calculo(nombre1: string, nombre2: string, resultado1: number, resultado2: number) {
-    console.log(this.puntuaciones[0]);
       //validacion equipo a gana
     if (resultado1 > resultado2) {
       this.puntuarEquipo(nombre1,3);
-    } else if (resultado1 < resultado2) {
+      this.puntuarEquipo(nombre2,0);
+    } 
+      //validacion equipo b gana
+    else if (resultado1 < resultado2) {
+      this.puntuarEquipo(nombre1,0);
       this.puntuarEquipo(nombre2,3);
-    } else {
+    } 
+      //validacion empate
+    else {
       this.puntuarEquipo(nombre1,1);
       this.puntuarEquipo(nombre2,1);
     }
@@ -41,19 +57,21 @@ export class FormularioComponent {
 
 
   formularioEnviado(){
-    this.tabla=["","","",""];
-    this.puntuaciones=[0,0,0,0];
-    this.corrimiento=0;
-    this.calculo(this.equipoModel.nombre1,this.equipoModel.nombre2,this.equipoModel.resultado1,this.equipoModel.resultado2);
-    this.calculo(this.equipoModel.nombre3,this.equipoModel.nombre4,this.equipoModel.resultado3,this.equipoModel.resultado4);
-    this.calculo(this.equipoModel.nombre5,this.equipoModel.nombre6,this.equipoModel.resultado5,this.equipoModel.resultado6);
-    this.calculo(this.equipoModel.nombre7,this.equipoModel.nombre8,this.equipoModel.resultado7,this.equipoModel.resultado8);
-    this.calculo(this.equipoModel.nombre9,this.equipoModel.nombre10,this.equipoModel.resultado9,this.equipoModel.resultado10);
-    this.calculo(this.equipoModel.nombre11,this.equipoModel.nombre12,this.equipoModel.resultado11,this.equipoModel.resultado12);
+    this.tabla=[];
+    this.puntuaciones=[];
+    this.errorflag=false;
+    this.show=false;
+  
+    for (let equipo of this.equipoModel){
+      this.calculo(equipo.nombre1,equipo.nombre2,equipo.resultado1,equipo.resultado2);
+    }
+    
     for (let i=0;i<this.puntuaciones.length;i++){
       console.log("Equipo:    ",this.tabla[i],"  Resultado:    ", this.puntuaciones[i]);
     }
-
-    this.show=true; //para mostrar los resultados ya que al inicio estan ocultos
+    
+    if(!this.errorflag){
+      this.show=true; //para mostrar los resultados ya que al inicio estan ocultos
+    }
   }
 }
